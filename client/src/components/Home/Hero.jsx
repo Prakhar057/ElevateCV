@@ -14,7 +14,7 @@ const Hero = () => {
 
   return (
     <>
-      <div className="min-h-screen pb-20 bg-gradient-to-b from-black via-gray-900 to-black">
+      <div className="min-h-screen pb-12 bg-gradient-to-b from-black via-gray-900 to-black">
         {/* Navbar */}
         <nav className="z-50 flex items-center justify-between w-full py-4 px-6 md:px-16 lg:px-24 xl:px-40 text-sm">
           <a href="/">
@@ -173,7 +173,7 @@ const Hero = () => {
           {/* CTA Buttons */}
           <div className="flex items-center gap-4 ">
             <Link
-              to ="/app"
+              to="/app"
               className="bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 text-white rounded-full px-9 h-12 m-1 ring-offset-2 ring-1 ring-gray-700 flex items-center transition-colors border border-gray-700"
             >
               Get started
