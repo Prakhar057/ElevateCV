@@ -13,35 +13,8 @@ const Footer = () => {
 
       <footer className=" mt-12 flex flex-wrap justify-center lg:justify-between overflow-hidden gap-10 md:gap-20 py-16 px-6 md:px-16 lg:px-24 xl:px-32 text-[13px] text-gray-500 bg-gradient-to-r from-black via-gray-900 to-black">
         <div className="flex flex-wrap items-start gap-10 md:gap-[60px] xl:gap-[140px]">
-          <a href="https://prebuiltui.com">
-            <svg
-              width="31"
-              height="34"
-              viewBox="0 0 31 34"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="m8.75 5.3 6.75 3.884 6.75-3.885M8.75 28.58v-7.755L2 16.939m27 0-6.75 3.885v7.754M2.405 9.408 15.5 16.954l13.095-7.546M15.5 32V16.939M29 22.915V10.962a2.98 2.98 0 0 0-1.5-2.585L17 2.4a3.01 3.01 0 0 0-3 0L3.5 8.377A3 3 0 0 0 2 10.962v11.953A2.98 2.98 0 0 0 3.5 25.5L14 31.477a3.01 3.01 0 0 0 3 0L27.5 25.5a3 3 0 0 0 1.5-2.585"
-                stroke="url(#a)"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <defs>
-                <linearGradient
-                  id="a"
-                  x1="15.5"
-                  y1="2"
-                  x2="15.5"
-                  y2="32"
-                  gradientUnits="userSpaceOnUse"
-                >
-                  <stop stop-color="#F8FAFC" />
-                  <stop offset="1" stop-color="#383838" />
-                </linearGradient>
-              </defs>
-            </svg>
+          <a href="#">
+            <img src="/logo.svg" alt="" />
           </a>
           <div>
             <p className="text-slate-100 font-semibold">Product</p>
@@ -124,7 +97,7 @@ const Footer = () => {
           </p>
           <div className="flex items-center gap-4 mt-3">
             <a
-              href="https://dribbble.com/prebuiltui"
+              href="https://dribbble.com/"
               target="_blank"
               rel="noreferrer"
             >
@@ -148,7 +121,7 @@ const Footer = () => {
               </svg>
             </a>
             <a
-              href="https://www.linkedin.com/company/prebuiltui"
+              href="https://www.linkedin.com/company/"
               target="_blank"
               rel="noreferrer"
             >
@@ -170,7 +143,7 @@ const Footer = () => {
                 <circle cx="4" cy="4" r="2"></circle>
               </svg>
             </a>
-            <a href="https://x.com/prebuiltui" target="_blank" rel="noreferrer">
+            <a href="https://x.com/" target="_blank" rel="noreferrer">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -188,7 +161,7 @@ const Footer = () => {
               </svg>
             </a>
             <a
-              href="https://www.youtube.com/@prebuiltui"
+              href="https://www.youtube.com/"
               target="_blank"
               rel="noreferrer"
             >
@@ -211,7 +184,7 @@ const Footer = () => {
             </a>
           </div>
           <p className="mt-3 text-center">
-            © 2025 <a href="https://prebuiltui.com">PrebuiltUI</a>
+            © 2025 <a href="">ElevateCv</a>
           </p>
         </div>
       </footer>
