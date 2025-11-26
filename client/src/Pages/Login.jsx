@@ -3,7 +3,7 @@ import React from "react";
 import { useSearchParams } from "react-router-dom";
 
 const Login = () => {
-  const [query,setQuery] = useSearchParams()
+  const [query] = useSearchParams()
   const urlState = query.get("state");
   const [state, setState] = React.useState(urlState || "login");
   const [formData, setFormData] = React.useState({
