@@ -28,7 +28,7 @@ const Dashboard = () => {
   const createResume = async (event) => {
     event.preventDefault();
     setshowCreateResume(false);
-    navigate(`/app/builder/resume123`);
+    navigate(`/app/builder/res123`);
   };
   useEffect(() => {
     loadAllResumes();
@@ -106,20 +106,20 @@ const Dashboard = () => {
             >
               <div
                 onClick={(e) => e.stopPropagation()}
-                className="relative bg-slate-50 border shadow-md rounded-lg w-full max-w-sm p-6"
+                className="relative bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 shadow-2xl rounded-lg w-full max-w-sm p-6"
               >
-                <h2 className="text-xl font-bold mb-4">Create a Resume</h2>
+                <h2 className="text-xl font-bold mb-4 text-white">Create a Resume</h2>
                 <input
                   type="text"
-                  placeholder="Enter a resume title "
-                  className="w-full px-4 py-2 mb-4 focus:border-green-600 ring-green-600 "
+                  placeholder="Enter a resume title"
+                  className="w-full px-4 py-2 mb-4 bg-gray-900 border border-gray-700 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                   required
                 />
-                <button className="w-full py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors">
+                <button className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
                   Create Resume
                 </button>
                 <XIcon
-                  className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 cursor-pointer transition-colors"
+                  className="absolute top-4 right-4 text-gray-400 hover:text-white cursor-pointer transition-colors"
                   onClick={() => {
                     setshowCreateResume(false);
                     setTitle(``);
