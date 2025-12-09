@@ -39,7 +39,7 @@ const Dashboard = () => {
       <div className="max-w-7xl mx-auto px-4 py-8">
         <p className="text-2xl font-medium mb-6 bg-gradient-to-r from-gray-300 to-white bg-clip-text text-transparent sm:hidden">
           {" "}
-          Welcome,us
+          Welcome,user
         </p>
 
         <div className="flex gap-4">
