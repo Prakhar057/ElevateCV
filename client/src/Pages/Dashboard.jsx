@@ -39,7 +39,7 @@ const Dashboard = () => {
       <div className="max-w-7xl mx-auto px-4 py-8">
         <p className="text-2xl font-medium mb-6 bg-gradient-to-r from-gray-300 to-white bg-clip-text text-transparent sm:hidden">
           {" "}
-          Welcome,user
+          Welcome,us
         </p>
 
         <div className="flex gap-4">
@@ -108,7 +108,9 @@ const Dashboard = () => {
                 onClick={(e) => e.stopPropagation()}
                 className="relative bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 shadow-2xl rounded-lg w-full max-w-sm p-6"
               >
-                <h2 className="text-xl font-bold mb-4 text-white">Create a Resume</h2>
+                <h2 className="text-xl font-bold mb-4 text-white">
+                  Create a Resume
+                </h2>
                 <input
                   type="text"
                   placeholder="Enter a resume title"
