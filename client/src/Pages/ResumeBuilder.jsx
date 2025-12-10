@@ -79,11 +79,11 @@ const ResumeBuilder = () => {
   }, []);
 
   return (
-    <div>
+    <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black">
       <div className="max-w-7xl mx-auto px-4 py-6">
         <Link
           to={"/app"}
-          className="inline-flex gap-2 items-center text-slate-500 hover:text-slate-700 transition-all"
+          className="inline-flex gap-2 items-center text-gray-400 hover:text-white transition-all"
         >
           <ArrowLeft className="size-4" />
           Back to Dashboard
@@ -93,11 +93,11 @@ const ResumeBuilder = () => {
         <div className="grid lg:grid-cols-12 gap-8">
           {/* Left Panel - Form */}
           <div className="relative lg:col-span-5 rounded-lg overflow-hidden">
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 pt-1">
+            <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg shadow-2xl border border-gray-700 p-6 pt-1">
               {/* Progress bar using activeSectionIndex */}
-              <hr className="abosolute top-0 left-0 right-0 border-2 border-gray-200" />
+              <hr className="abosolute top-0 left-0 right-0 border-2 border-gray-700" />
               <hr
-                className="absolute top-0 left-0 h-1 bg-gradient-to-r from-green-500 to green-600 border-none transition-all duration-2000"
+                className="absolute top-0 left-0 h-1 bg-gradient-to-r from-blue-500 to-purple-600 border-none transition-all duration-2000"
                 style={{
                   width: `${
                     (activeSectionIndex * 100) / (sections.length - 1)
@@ -105,7 +105,7 @@ const ResumeBuilder = () => {
                 }}
               />
               {/* Section Navigation */}
-              <div className="flex justify-between items-center mb-6 border-b border-gray-300 py-1">
+              <div className="flex justify-between items-center mb-6 border-b border-gray-700 py-1">
                 <div className=""></div>
                 <div className="flex items-center">
                   {activeSectionIndex !== 0 && (
@@ -115,29 +115,32 @@ const ResumeBuilder = () => {
                           Math.max(prevIndex - 1, 0)
                         )
                       }
-                      className="flex items-center gap-1 p-3 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 transition-all"
+                      className="flex items-center gap-1 p-3 rounded-lg text-sm font-medium text-gray-300 hover:bg-gray-700 transition-all"
                       disabled={activeSectionIndex === 0}
                     >
                       <ChevronLeft className="size-4" />
                     </button>
                   )}
-                    <button
-                      onClick={() =>
-                        setActiveSectionIndex((prevIndex) =>
-                          Math.min(prevIndex + 1, sections.length-1)
-                        )
-                      }
-                      className={` flex items-center gap-1 p-3 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 transition-all ${activeSectionIndex === sections.length-1 && "opacity-50"}`} disabled={activeSectionIndex === sections.length-1}
-                    > Next
-                      <ChevronRight className="size-4" />
-                    </button>
+                  <button
+                    onClick={() =>
+                      setActiveSectionIndex((prevIndex) =>
+                        Math.min(prevIndex + 1, sections.length - 1)
+                      )
+                    }
+                    className={` flex items-center gap-1 p-3 rounded-lg text-sm font-medium text-gray-300 hover:bg-gray-700 transition-all ${
+                      activeSectionIndex === sections.length - 1 && "opacity-50"
+                    }`}
+                    disabled={activeSectionIndex === sections.length - 1}
+                  >
+                    {" "}
+                    Next
+                    <ChevronRight className="size-4" />
+                  </button>
                 </div>
               </div>
               {/* Form Content */}
-              <div  className="space-y-6">
-                {activeSection.id === 'personal' && (
-                    <div></div>
-                )}
+              <div className="space-y-6">
+                {activeSection.id === "personal" && <div></div>}
               </div>
             </div>
           </div>
