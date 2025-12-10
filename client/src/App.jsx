@@ -6,6 +6,7 @@ import Dashboard from "./Pages/Dashboard";
 import ElevateCv from "./Pages/ElevateCv";
 import Preview from "./Pages/Preview";
 import Login from "./Pages/Login";
+import ResumeBuilder from "./Pages/ResumeBuilder";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="app" element={<Layout />}>
           <Route index element={<Dashboard />} />
-          <Route path="builder/:resumeId" element={<ElevateCv />} />
+          <Route path="builder/:resumeId" element={<ResumeBuilder />} />
         </Route>
         <Route path="view/:resumeId" element={<Preview/>}/>
         <Route path="login" element={<Login/>}/>
