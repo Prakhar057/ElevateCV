@@ -110,13 +110,13 @@ const PersonalInfoForm = ({
           const Icon = field.icon
           return (
             <div key={field.key} className="space-y-1 mt-5">
-              <label className="flex items-center gap-2 text-sm font-medium text-gray-600">
+              <label className="flex items-center gap-2 text-sm font-medium text-gray-300">
                 <Icon className="size-4"/>
                 {field.label}
-                {field.required && <span className="text-red-500">*</span>}
+                {field.required && <span className="text-red-400">*</span>}
 
               </label>
-              <input type={field.type} value ={data[field.key] || ""} onChange={(e)=>handleChange(field.key , e.target.value)} className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors text-sm" placeholder={`Enter your ${field.label.toLowerCase()}`} required={field.required || false}></input>
+              <input type={field.type} value ={data[field.key] || ""} onChange={(e)=>handleChange(field.key , e.target.value)} className="mt-1 w-full px-3 py-2 bg-gray-900 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors text-sm text-white placeholder-gray-500" placeholder={`Enter your ${field.label.toLowerCase()}`} required={field.required || false}></input>
             </div>
           )
         })}
