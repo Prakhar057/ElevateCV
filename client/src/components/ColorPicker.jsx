@@ -1,7 +1,7 @@
-import { Palette } from "lucide-react";
+import { Check, Palette } from "lucide-react";
 import React, { useState } from "react";
 
-const ColorPicker = ({onChange,selectColor}) => {
+const ColorPicker = ({ onChange, selectColor }) => {
   const colors = [
     { name: "Blue", value: "#3B82F6" },
     { name: "Indigo", value: "#6366F1" },
@@ -14,13 +14,46 @@ const ColorPicker = ({onChange,selectColor}) => {
     { name: "Gray", value: "#6B7280" },
     { name: "Black", value: "#1F2937" },
   ];
-   const [isOpen,setIsOpen] = useState(false);
-  return <div className="relative">
-    <button className="flex items-center gap-1 text-sm text-purple-600 bg-gradient-to-br from-purple-50 to-purple-100 ">
-        <Palette size={16}/>
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div className="relative">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center gap-1 text-sm text-white bg-gradient-to-br from-gray-800 to-gray-900 ring-gray-600 hover:ring transition-all px-3 py-2 rounded-lg border border-gray-700"
+      >
+        <Palette size={16} />
         <span className="max-sm:hidden"> Accent </span>
-    </button>
-  </div>;
+      </button>
+      {isOpen && (
+        <div className="grid grid-cols-4 w-60 gap-2 absolute top-full left-0 right-0 p-3 mt-2 z-10 bg-gradient-to-br from-gray-800 to-gray-900 rounded-md border border-gray-700 shadow-xl">
+          {colors.map((color) => (
+            <div
+              onClick={() => onChange(color.value)}
+              key={color.value}
+              className="relative cursor-pointer group flex flex-col"
+            >
+              <div
+                className={`w-12 h-12 rounded-full border-2 ${
+                  selectColor === color.value
+                    ? "border-white"
+                    : "border-transparent"
+                } group-hover:border-white/50 transition-colors`}
+                style={{ backgroundColor: color.value }}
+              ></div>
+              {selectColor === color.value && (
+                <div className="absolute top-0 left-0 right-0 bottom-4.5 flex items-center justify-center">
+                  <Check className="size-5 text-white drop-shadow-md" />
+                </div>
+              )}
+              <p className="text-xs text-center mt-1 text-gray-400">
+                {color.name}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default ColorPicker;
