@@ -17,7 +17,7 @@ const ProfessionalSummaryForm = ({ data, onChange, setResumeData }) => {
         </button>
       </div>
       <div className="mt-6">
-        <textarea value={data || ""} onChange={(e)=>onChange(e.target.value)} className="w-full h-50 p-3 px-4 mt-2 bg-gray-900 border text-sm border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors resize-none text-white placeholder-gray-500" name="" id="" placeholder="Write a compelling professional summary that highlights your key strengths and career objectives..."/>
+    <textarea value={data || ""} onChange={(e)=>onChange(e.target.value)} className="w-full h-50 p-3 px-4 mt-2 bg-gray-900 border text-sm border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors resize-none text-white placeholder-gray-500" name="" id="" placeholder="Write a compelling professional summary that highlights your key strengths and career objectives..."/>
             <p className="text-sm text-gray-400 mt-2">Tip: Keep it concise(3-4 sentences) and focus on your most relevant achievements and skills.</p>
       </div>
     </div>
