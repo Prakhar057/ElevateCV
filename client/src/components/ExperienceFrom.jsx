@@ -42,8 +42,8 @@ const ExperienceForm = ({ data, onChange }) => {
       </div>
 
       {data.length === 0 ? (
-        <div className="text-center py-8 text-gray-500">
-          <Briefcase className="w-12 h-12 mx-auto mb-3 text-gray-300" />
+        <div className="text-center py-8 text-gray-400">
+          <Briefcase className="w-12 h-12 mx-auto mb-3 text-gray-500" />
           <p>No work experience added yet.</p>
           <p className="text-sm">Click "Add Experience" to get started.</p>
         </div>
@@ -55,8 +55,10 @@ const ExperienceForm = ({ data, onChange }) => {
               className="p-4 border border-gray-700 rounded-lg space-y-3"
             >
               <div className="flex justify-between items-start">
-                <h4>Experience #{index + 1}</h4>
-                <button className="text-red-500 hover:text-red-700 transition-colors">
+                <h4 className="text-white font-medium">
+                  Experience #{index + 1}
+                </h4>
+                <button className="text-red-400 hover:text-red-500 transition-colors">
                   <Trash2 className="size-4" />
                 </button>
               </div>
@@ -68,7 +70,7 @@ const ExperienceForm = ({ data, onChange }) => {
                   }
                   type="text"
                   placeholder="Company Name"
-                  className="px-3 py-2 text-sm rounded-lg"
+                  className="px-3 py-2 text-sm rounded-lg bg-gray-900 border border-gray-700 text-white placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
                 />
                 <input
                   value={experience.position || ""}
@@ -77,7 +79,7 @@ const ExperienceForm = ({ data, onChange }) => {
                   }
                   type="text"
                   placeholder="Job title"
-                  className="px-3 py-2 text-sm rounded-lg"
+                  className="px-3 py-2 text-sm rounded-lg bg-gray-900 border border-gray-700 text-white placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
                 />
                 <input
                   value={experience.start_date || ""}
@@ -85,7 +87,7 @@ const ExperienceForm = ({ data, onChange }) => {
                     updateExperience(index, "start_date", e.target.value)
                   }
                   type="month"
-                  className="px-3 py-2 text-sm rounded-lg"
+                  className="px-3 py-2 text-sm rounded-lg bg-gray-900 border border-gray-700 text-white placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
                 />
                 <input
                   value={experience.end_date || ""}
@@ -94,13 +96,13 @@ const ExperienceForm = ({ data, onChange }) => {
                   }
                   disabled={experience.is_current}
                   type="month"
-                  className="px-3 py-2 text-sm rounded-lg disabled:bg-gray-100"
+                  className="px-3 py-2 text-sm rounded-lg bg-gray-900 border border-gray-700 text-white placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors disabled:bg-gray-800 disabled:text-gray-500"
                 />
               </div>
 
-              <label>
+              <label className="flex items-center gap-2">
                 <input
-                  className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                  className="rounded border-gray-600 bg-gray-900 text-blue-600 focus:ring-blue-500"
                   type="checkbox"
                   onChange={(e) => {
                     updateExperience(
@@ -111,19 +113,33 @@ const ExperienceForm = ({ data, onChange }) => {
                   }}
                   checked={experience.is_current || false}
                 />
-                <span className="text-sm text-gray-700">
+                <span className="text-sm text-gray-300">
                   Currently working here
                 </span>
               </label>
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <label className="text-sm font-medium text-gray-700" htmlFor="">Job Description</label>
-                  <button className="flex items-center gap-1 px-2 py-1 text-xs bg-purple-100 text-purple-700 rounded hover:bg-purple-200 transition-colors disabled:opacity-50">
+                  <label
+                    className="text-sm font-medium text-gray-300"
+                    htmlFor=""
+                  >
+                    Job Description
+                  </label>
+                  <button className="flex items-center gap-1 px-2 py-1 text-xs bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors disabled:opacity-50">
                     <Sparkles className="w-3 h-3" />
                     Enhance with AI
                   </button>
                 </div>
-                <textarea value={experience.description || ""} onChange={(e)=>updateExperience(index,"description",e.target.value)} className="w-full text-sm px-3 py-2 rounded-lg resize-none" placeholder="Describe your key responsibilties and achievements..." name="" id=""/>
+                <textarea
+                  value={experience.description || ""}
+                  onChange={(e) =>
+                    updateExperience(index, "description", e.target.value)
+                  }
+                  className="w-full h-32 text-sm px-3 py-2 rounded-lg resize-none bg-gray-900 border border-gray-700 text-white placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                  placeholder="Describe your key responsibilties and achievements..."
+                  name=""
+                  id=""
+                />
               </div>
             </div>
           ))}
