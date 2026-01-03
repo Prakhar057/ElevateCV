@@ -23,16 +23,16 @@ const SkillsForm = ({ data, onChange }) => {
   return (
     <div className="space-y-4">
       <div>
-        <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900">
+        <h3 className="flex items-center gap-2 text-lg font-semibold text-white">
           Skills
         </h3>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-gray-400">
           Add your techical and soft skills
         </p>
       </div>
       <div className="flex gap-2">
         <input
-          className="flex-1 px-3 py-2 text-sm"
+          className="flex-1 px-3 py-2 text-sm bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           type="text"
           placeholder="Enter a skill (e.g., Javascript, Project Management)"
           onChange={(e) => setNewSkill(e.target.value)}
@@ -48,15 +48,15 @@ const SkillsForm = ({ data, onChange }) => {
         </button>
       </div>
       {data.length > 0 ? (
-        <div className="flex flext-wrap gap-2">
+        <div className="flex flex-wrap gap-2">
           {data.map((skill, index) => (
             <span
               key={index}
-              className="flex items-center gap-1 px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm"
+              className="flex items-center gap-1 px-3 py-1 bg-blue-600/20 text-blue-400 border border-blue-500/30 rounded-full text-sm"
             >
               {skill}
               <button
-                className="ml-1 hover:bg-blue-200 rounded-full p-0.5 transition-colors"
+                className="ml-1 hover:bg-blue-500/30 rounded-full p-0.5 transition-colors"
                 onClick={() => removeSkill(index)}
               >
                 <X className="h-3 w-3" />
@@ -65,14 +65,14 @@ const SkillsForm = ({ data, onChange }) => {
           ))}
         </div>
       ) : (
-        <div className="text-center py-6 text-gray-500">
-          <Sparkles className="w-10 h-10 mx-auto mb-2 text-gray-300" />
+        <div className="text-center py-6 text-gray-400">
+          <Sparkles className="w-10 h-10 mx-auto mb-2 text-gray-500" />
           <p>No skills added yet</p>
           <p className="text-sm">Add your technical and soft skills above</p>
         </div>
       )}
-      <div className="bg-blue-50 p-3 rounded-lg">
-        <p className="text-sm text-blue-800">
+      <div className="bg-blue-900/30 border border-blue-500/20 p-3 rounded-lg">
+        <p className="text-sm text-blue-300">
           <strong>Tip:</strong> Add 8-12 relevant skills. Include both technical
           skills (programming languages, tools) and soft skills
           (leadership,communication).
