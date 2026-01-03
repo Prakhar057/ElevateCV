@@ -6,9 +6,14 @@ import {
   Briefcase,
   ChevronLeft,
   ChevronRight,
+  DownloadIcon,
+  EyeIcon,
+  EyeOffIcon,
   FileText,
   FolderIcon,
   GraduationCap,
+  Share2,
+  Share2Icon,
   Sparkles,
   User,
 } from "lucide-react";
@@ -87,6 +92,26 @@ const ResumeBuilder = () => {
     loadExistingResume();
   }, []);
 
+  const changeResumeVisibiliyy = async () => {
+    setResumeData({ ...resumeData, public: !resumeData.public });
+  };
+
+  const handleShare = () => {
+    const frontendUrl = window.location.href.split("/app/")[0];
+    const resumeUrl = frontendUrl + "/view/" + resumeId;
+
+    if(navigator.share){
+      navigator.share({url : resumeUrl, text : "My Resume"})
+    }
+    else {
+      alert ("Share not supported on this browser");
+    }
+  };
+
+  const downloadResume = ()=>{
+    window.print();
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black">
       <div className="max-w-7xl mx-auto px-4 py-6">
@@ -104,7 +129,7 @@ const ResumeBuilder = () => {
           <div className="relative lg:col-span-5 rounded-lg overflow-hidden">
             <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg shadow-2xl border border-gray-700 p-6 pt-1">
               {/* Progress bar using activeSectionIndex */}
-              <hr className="abosolute top-0 left-0 right-0 border-2 border-gray-700" />
+              <hr className="absolute top-0 left-0 right-0 border-2 border-gray-700" />
               <hr
                 className="absolute top-0 left-0 h-1 bg-gradient-to-r from-blue-500 to-purple-600 border-none transition-all duration-2000"
                 style={{
@@ -222,11 +247,34 @@ const ResumeBuilder = () => {
                   />
                 )}
               </div>
+              <button className="bg-gradient-to-r from-blue-600 to-blue-900 text-white hover:from-blue-600 hover:to-blue-700 transition-all rounded-md px-6 py-2 mt-6 text-sm font-medium shadow-lg shadow-purple-900/30">
+                Save Changes
+              </button>
             </div>
           </div>
           {/* Right Panel - Preview */}
           <div className="lg:col-span-7 max-lg:mt-6">
-            <div>{/* buttons */}</div>
+            <div className="relative w-full">
+              <div className="absolute bottom-3 left-0 right-0 flex items-center justify-end gap-2">
+                {resumeData.public && (
+                  <button onClick={handleShare} className="flex items-center p-2 px-4 gap-2 text-xs bg-gray-800 border border-gray-600 text-blue-400 rounded-lg hover:bg-gray-700 hover:border-blue-500 transition-all">
+                    <Share2Icon className="size-4" /> Share
+                  </button>
+                )}
+                <button onClick={changeResumeVisibiliyy} className="flex items-center p-2 px-4 gap-2 text-xs bg-gray-800 border border-gray-600 text-blue-400 rounded-lg hover:bg-gray-700 hover:border-blue-500 transition-all">
+                  {resumeData.public ? (
+                    <EyeIcon className="size-4" />
+                  ) : (
+                    <EyeOffIcon className="size-4" />
+                  )}
+                  {resumeData.public ? "Public" : "Private"}
+                </button>
+                <button onClick={downloadResume} className="flex items-center p-2 px-6 gap-2 text-xs bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-lg hover:from-blue-400 hover:to-blue-500 transition-all shadow-lg shadow-purple-900/30">
+                  <DownloadIcon className="size-4" />
+                  Download
+                </button>
+              </div>
+            </div>
             <ResumePreview
               data={resumeData}
               template={resumeData.template}
