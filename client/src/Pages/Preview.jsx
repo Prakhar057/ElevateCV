@@ -23,7 +23,7 @@ const Preview = ({ data }) => {
   }, []);
 
   return resumeData ? (
-    <div className="bg-slate-100">
+    <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black">
       <div className="max-w-3xl mx-auto py-10">
         <ResumePreview
           classes="py-4 bg-white"
@@ -44,7 +44,7 @@ const Preview = ({ data }) => {
           </p>
           <a
             href="/"
-            className="mt-6 bg-green-500 hover:bg-green-600 text-white rounded-full px-6 h-9 m-1 ring-offset-1 ring-1 ring-green-400 flex items-center transition-colors"
+            className="mt-6 bg-blue-500 hover:bg-blue-600 text-white rounded-full px-6 h-9 m-1 ring-offset-1 ring-1 ring-green-400 flex items-center transition-colors"
           >
             <ArrowLeftIcon className="mr-2 size-4" />
             go to home
