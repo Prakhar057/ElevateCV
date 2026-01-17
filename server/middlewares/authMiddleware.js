@@ -12,7 +12,7 @@ const protect = async(req,res)=>{
         next();
     }
     catch(error){
-        return res.status(401).message({"Unauthorized"})
+        return res.status(401).json({message : "Unauthorized"})
     }
 }
 
