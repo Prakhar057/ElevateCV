@@ -39,7 +39,7 @@ export const registerUser = async (req, res) => {
 
     return res
       .status(201)
-      .json({ message: "User created successfullly", token, user: newUser });
+      .json({ message: "User created successfully", token, user: newUser });
   } catch (error) {
     return res.status(400).json({ message: error.message });
   }
@@ -69,7 +69,7 @@ export const loginUser = async (req, res) => {
 
     return res
       .status(200)
-      .json({ message: "User logged in successfullly", token, user });
+      .json({ message: "User logged in successfully", token, user });
   } catch (error) {
     return res.status(400).json({ message: error.message });
   }
@@ -91,26 +91,21 @@ export const getUserById = async (req, res) => {
     //return user
     user.password = undefined;
     return res.status(200).json({ user });
-    
   } catch (error) {
     return res.status(400).json({ message: error.message });
   }
 };
 
-
-// controller for getting resumes of a user 
+// controller for getting resumes of a user
 // GET : /api/users/resumes
 
-export const getUserResume = async (req,res)=>{
-try{
-  const userId = req.userId;
-  //return user resumes
-  const resumes = await Resume.find({userId})
-  return res.status(200).json({resumes})
-}
-catch(error){
- return res.status(400).json({message : error.message})
-}
-}
-
-
+export const getUserResume = async (req, res) => {
+  try {
+    const userId = req.userId;
+    //return user resumes
+    const resumes = await Resume.find({ userId });
+    return res.status(200).json({ resumes });
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
+};
