@@ -42,7 +42,7 @@ const Dashboard = () => {
   };
   const deleteResume = async (resumeId) => {
     const confirm = window.confirm(
-      "Are you sure you want to delete this resume"
+      "Are you sure you want to delete this resume",
     );
     if (confirm) {
       setAllResumes((prev) => prev.filter((resume) => resume._id !== resumeId));
@@ -97,7 +97,7 @@ const Dashboard = () => {
                 }}
               >
                 <FilePenIcon
-                  className="size-7 group-hove:scale-105 transition-all"
+                  className="size-7 group-hover:scale-105 transition-all"
                   style={{ color: basecolor }}
                 />
                 <p

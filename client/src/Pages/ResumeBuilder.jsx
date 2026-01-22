@@ -92,7 +92,7 @@ const ResumeBuilder = () => {
     loadExistingResume();
   }, []);
 
-  const changeResumeVisibiliyy = async () => {
+  const changeResumeVisibility = async () => {
     setResumeData({ ...resumeData, public: !resumeData.public });
   };
 
@@ -100,17 +100,16 @@ const ResumeBuilder = () => {
     const frontendUrl = window.location.href.split("/app/")[0];
     const resumeUrl = frontendUrl + "/view/" + resumeId;
 
-    if(navigator.share){
-      navigator.share({url : resumeUrl, text : "My Resume"})
-    }
-    else {
-      alert ("Share not supported on this browser");
+    if (navigator.share) {
+      navigator.share({ url: resumeUrl, text: "My Resume" });
+    } else {
+      alert("Share not supported on this browser");
     }
   };
 
-  const downloadResume = ()=>{
+  const downloadResume = () => {
     window.print();
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black">
@@ -162,7 +161,7 @@ const ResumeBuilder = () => {
                     <button
                       onClick={() =>
                         setActiveSectionIndex((prevIndex) =>
-                          Math.max(prevIndex - 1, 0)
+                          Math.max(prevIndex - 1, 0),
                         )
                       }
                       className="flex items-center gap-1 p-3 rounded-lg text-sm font-medium text-gray-300 hover:bg-gray-700 transition-all"
@@ -174,7 +173,7 @@ const ResumeBuilder = () => {
                   <button
                     onClick={() =>
                       setActiveSectionIndex((prevIndex) =>
-                        Math.min(prevIndex + 1, sections.length - 1)
+                        Math.min(prevIndex + 1, sections.length - 1),
                       )
                     }
                     className={` flex items-center gap-1 p-3 rounded-lg text-sm font-medium text-gray-300 hover:bg-gray-700 transition-all ${
@@ -257,11 +256,17 @@ const ResumeBuilder = () => {
             <div className="relative w-full">
               <div className="absolute bottom-3 left-0 right-0 flex items-center justify-end gap-2">
                 {resumeData.public && (
-                  <button onClick={handleShare} className="flex items-center p-2 px-4 gap-2 text-xs bg-gray-800 border border-gray-600 text-blue-400 rounded-lg hover:bg-gray-700 hover:border-blue-500 transition-all">
+                  <button
+                    onClick={handleShare}
+                    className="flex items-center p-2 px-4 gap-2 text-xs bg-gray-800 border border-gray-600 text-blue-400 rounded-lg hover:bg-gray-700 hover:border-blue-500 transition-all"
+                  >
                     <Share2Icon className="size-4" /> Share
                   </button>
                 )}
-                <button onClick={changeResumeVisibiliyy} className="flex items-center p-2 px-4 gap-2 text-xs bg-gray-800 border border-gray-600 text-blue-400 rounded-lg hover:bg-gray-700 hover:border-blue-500 transition-all">
+                <button
+                  onClick={changeResumeVisibility}
+                  className="flex items-center p-2 px-4 gap-2 text-xs bg-gray-800 border border-gray-600 text-blue-400 rounded-lg hover:bg-gray-700 hover:border-blue-500 transition-all"
+                >
                   {resumeData.public ? (
                     <EyeIcon className="size-4" />
                   ) : (
@@ -269,7 +274,10 @@ const ResumeBuilder = () => {
                   )}
                   {resumeData.public ? "Public" : "Private"}
                 </button>
-                <button onClick={downloadResume} className="flex items-center p-2 px-6 gap-2 text-xs bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-lg hover:from-blue-400 hover:to-blue-500 transition-all shadow-lg shadow-purple-900/30">
+                <button
+                  onClick={downloadResume}
+                  className="flex items-center p-2 px-6 gap-2 text-xs bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-lg hover:from-blue-400 hover:to-blue-500 transition-all shadow-lg shadow-purple-900/30"
+                >
                   <DownloadIcon className="size-4" />
                   Download
                 </button>

@@ -82,7 +82,7 @@ const EducationForm = ({ data, onChange }) => {
                     updateEducation(index, "degree", e.target.value)
                   }
                   type="text"
-                  placeholder="Degree(e.g. Bachelors's, Master's)"
+                  placeholder="Degree (e.g. Bachelor's, Master's)"
                   className="px-3 py-2 text-sm bg-gray-900 border border-gray-700 text-white placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
                 />
                 <input
