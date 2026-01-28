@@ -1,10 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Hero = () => {
   const [menuOpen, setMenuOpen] = React.useState(false);
 
- 
+  const { user } = useSelector((state) => state.auth);
 
   return (
     <>
@@ -34,14 +35,23 @@ const Hero = () => {
             <Link
               to="/app?state=register"
               className="hidden md:block px-6 py-2 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 active:scale-95 transition-all rounded-full text-white border border-gray-700"
+              hidden={user}
             >
               Get started
             </Link>
             <Link
               to="/app/?state=login"
               className="hidden md:block px-6 py-2 border border-gray-700 active:scale-95 hover:bg-gray-800 transition-all rounded-full text-gray-300 hover:text-white"
+              hidden={user}
             >
               Login
+            </Link>
+            <Link
+              className="hidden md:block px-6 py-2 border border-gray-700 active:scale-95 hover:bg-gray-800 transition-all rounded-full text-gray-300 hover:text-white"
+              hidden={!user}
+              to="/app"
+            >
+              Dashboard
             </Link>
           </div>
 
@@ -212,8 +222,6 @@ const Hero = () => {
           <p className="py-6 text-gray-500 mt-14">
             Everyone's first choice for creating resumes
           </p>
-
-          
         </div>
       </div>
       <style>

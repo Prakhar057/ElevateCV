@@ -10,8 +10,14 @@ import {
 import React, { useEffect, useState } from "react";
 import { dummyResumeData } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import api from "../configs/api";
+import toast from "react-hot-toast";
+import pdfToText from "react-pdftotext";
 
 const Dashboard = () => {
+  const { user, token } = useSelector((state) => state.auth);
+  const [isLoading, setIsLoading] = useState(false);
   const colors = ["#8b5cf6", "#60a5fa", "#34d399", "#f472b6", "#a78bfa"];
 
   const [allResumes, setAllResumes] = useState([]);
@@ -26,15 +32,65 @@ const Dashboard = () => {
     setAllResumes(dummyResumeData);
   };
   const createResume = async (event) => {
-    event.preventDefault();
-    setshowCreateResume(false);
-    navigate(`/app/builder/res123`);
+    try {
+      event.preventDefault();
+      const { data } = await api.post(
+        "/api/resumes/create",
+        { title },
+        {
+          headers: {
+            Authorization: token,
+          },
+        },
+      );
+      setAllResumes([...allResumes, data.resume]);
+      setTitle("");
+      setshowCreateResume(false);
+      navigate(`/app/builder/${data.resume._id}`);
+    } catch (error) {
+      toast.error(error?.response?.data?.message || error.message);
+    }
   };
 
   const uploadResume = async (event) => {
     event.preventDefault();
-    setShowUploadResume(false);
-    navigate(`/app/builder/res123`);
+
+    if (!resume) {
+      toast.error("Please select a PDF file to upload");
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const resumeText = await pdfToText(resume);
+     
+
+      if (!resumeText || resumeText.trim() === "") {
+        toast.error(
+          "Unable to extract text from PDF. Please try a different file.",
+        );
+        setIsLoading(false);
+        return;
+      }
+
+      const { data } = await api.post(
+        "/api/ai/upload-resume",
+        { title, resumeText },
+        {
+          headers: {
+            Authorization: token,
+            "Content-Type": "application/json",
+          },
+        },
+      );
+      setTitle("");
+      setResume(null);
+      setShowUploadResume(false);
+      navigate(`/app/builder/${data.resumeId}`);
+    } catch (error) {
+      toast.error(error?.response?.data?.message || error.message);
+    }
+    setIsLoading(false);
   };
 
   const editTitle = async (event) => {
@@ -213,8 +269,11 @@ const Dashboard = () => {
                     onChange={(e) => setResume(e.target.files[0])}
                   />
                 </div>
-                <button className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                  Upload Resume
+                <button
+                  disabled={isLoading}
+                  className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isLoading ? "Uploading..." : "Upload Resume"}
                 </button>
                 <XIcon
                   className="absolute top-4 right-4 text-gray-400 hover:text-white cursor-pointer transition-colors"
