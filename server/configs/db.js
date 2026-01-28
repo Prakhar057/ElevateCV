@@ -12,7 +12,7 @@ const connectDB = async () => {
       mongodbURI = mongodbURI.slice(0, -1);
     }
     mongoose.connection.on("connected", () => {
-      console.log("Connected to Database Sucessfully");
+      console.log("Connected to Database Successfully");
     });
     await mongoose.connect(`${mongodbURI}/${projectName}`);
   } catch (error) {

@@ -69,6 +69,7 @@ export const enhanceJobDescription = async (req, res) => {
 export const uploadResume = async (req, res) => {
   try {
     const { resumeText, title } = req.body;
+
     const userId = req.userId;
     if (!resumeText) {
       return res.status(400).json({ message: "Missing required fields" });
@@ -183,7 +184,7 @@ export const uploadResume = async (req, res) => {
 
     const response = await ai.chat.completions.create({
       model: process.env.OPENAI_MODEL,
-      message: [
+      messages: [
         {
           role: "system",
           content: systemPrompt,

@@ -12,16 +12,17 @@ await connectDB();
 
 const PORT = process.env.PORT || 3000;
 const app = express();
-app.use(express.json());
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("Server is Live");
 });
 
-app.use('/api/users' ,userRouter)
-app.use('/api/resumes',resumeRouter)
-app.use('/api/ai', aiRouter)
+app.use("/api/users", userRouter);
+app.use("/api/resumes", resumeRouter);
+app.use("/api/ai", aiRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running at port ${PORT}`);

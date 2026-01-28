@@ -79,7 +79,7 @@ const Dashboard = () => {
         {
           headers: {
             Authorization: token,
-            "Content-Type": "application/json",
+            
           },
         },
       );
