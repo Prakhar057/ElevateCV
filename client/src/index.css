@@ -13,4 +13,10 @@ body {
   button {
     @apply cursor-pointer;
   }
+  
+  /* Style month input calendar icon to white */
+  input[type="month"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+  }
 }

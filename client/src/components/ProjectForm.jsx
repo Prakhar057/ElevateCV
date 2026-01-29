@@ -39,7 +39,7 @@ const ProjectForm = ({ data, onChange }) => {
           Add Project
         </button>
       </div>
-
+      
       <div className="space-y-4 mt-6">
         {data.map((project, index) => (
           <div
