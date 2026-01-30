@@ -1,7 +1,8 @@
 import { Plus, Trash2 } from "lucide-react";
 import React from "react";
 
-const ProjectForm = ({ data, onChange }) => {
+const ProjectForm = ({ data , onChange }) => {
+  
   const addProject = () => {
     const newProject = {
       name: "",
@@ -39,9 +40,9 @@ const ProjectForm = ({ data, onChange }) => {
           Add Project
         </button>
       </div>
-      
+
       <div className="space-y-4 mt-6">
-        {data.map((project, index) => (
+        {data?.map((project, index) => (
           <div
             key={index}
             className="p-4 border border-gray-700 rounded-lg space-y-3"

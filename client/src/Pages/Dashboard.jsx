@@ -1,7 +1,6 @@
 import {
   FilePenIcon,
   LoaderCircleIcon,
-  Pencil,
   PencilIcon,
   PlusIcon,
   TrashIcon,
@@ -16,7 +15,7 @@ import toast from "react-hot-toast";
 import pdfToText from "react-pdftotext";
 
 const Dashboard = () => {
-  const { user, token } = useSelector((state) => state.auth);
+  const { token } = useSelector((state) => state.auth);
   const [isLoading, setIsLoading] = useState(false);
   const colors = ["#8b5cf6", "#60a5fa", "#34d399", "#f472b6", "#a78bfa"];
 

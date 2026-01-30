@@ -39,7 +39,7 @@ const ResumeBuilder = () => {
     professional_summary: "",
     experience: [],
     education: [],
-    project: [],
+    projects: [],
     skills: [],
     template: "classic",
     accent_color: "#3B82F6",
@@ -102,40 +102,48 @@ const ResumeBuilder = () => {
   }, []);
 
   const changeResumeVisibility = async () => {
-        try{
-           const formData = new FormData()
-           formData.append("resumeId", resumeId)
-           formData.append("resumeData", JSON.stringify({public : !resumeData.public}))
+    try {
+      const formData = new FormData();
+      formData.append("resumeId", resumeId);
+      formData.append(
+        "resumeData",
+        JSON.stringify({ public: !resumeData.public }),
+      );
 
-           const{data} = await api.put(`/api/resumes/update`, formData, {headers:{Authorization:token}})
-           setResumeData({...resumeData, public : !resumeData.public})
-           toast.success(data.message)
-        }catch(error){
-          console.log("Error editing this resume ", error)
-        }
+      const { data } = await api.put(`/api/resumes/update`, formData, {
+        headers: { Authorization: token },
+      });
+      setResumeData({ ...resumeData, public: !resumeData.public });
+      toast.success(data.message);
+    } catch (error) {
+      console.log("Error editing this resume ", error);
+    }
   };
-  const saveResume = async()=>{
-    try { 
-      let updatedResumeData = structuredClone(resumeData)
+  const saveResume = async () => {
+    try {
+      let updatedResumeData = structuredClone(resumeData);
       //remove image from updatedResumeData
 
-      if(typeof resumeData?.personal_info?.image === 'object'){
-        delete updatedResumeData.personal_info.image
+      if (typeof resumeData?.personal_info?.image === "object") {
+        delete updatedResumeData.personal_info.image;
       }
       const formData = new FormData();
-      formData.append("resumeId", resumeId)
-      formData.append("resumeData" , JSON.stringify(updatedResumeData))
-      removeBackground && formData.append("removeBackground" , "yes")
-      typeof resumeData.personal_info.image === 'object' && formData.append("image", resumeData.personal_info.image)
+      formData.append("resumeId", resumeId);
+      formData.append("resumeData", JSON.stringify(updatedResumeData));
+      removeBackground && formData.append("removeBackground", "yes");
+      typeof resumeData.personal_info.image === "object" &&
+        formData.append("image", resumeData.personal_info.image);
 
-      const {data} = await api.put(`/api/resumes/update`,formData, {headers :{Authorization:token}})
-      
-      setResumeData(data.resume)
-      toast.success(data.message)
-    }catch(error){
-      console.log("Error saving resume" , error)
+      const { data } = await api.put(`/api/resumes/update`, formData, {
+        headers: { Authorization: token },
+      });
+
+      setResumeData(data.resume);
+      toast.success(data.message);
+    } catch (error) {
+      console.log("Error saving resume", error);
     }
-  }
+  };
   const handleShare = () => {
     const frontendUrl = window.location.href.split("/app/")[0];
     const resumeUrl = frontendUrl + "/view/" + resumeId;
@@ -272,9 +280,9 @@ const ResumeBuilder = () => {
                 )}
                 {activeSection.id == "projects" && (
                   <ProjectForm
-                    data={resumeData.project}
+                    data={resumeData.projects}
                     onChange={(data) =>
-                      setResumeData((prev) => ({ ...prev, project: data }))
+                      setResumeData((prev) => ({ ...prev, projects: data }))
                     }
                   />
                 )}
@@ -287,7 +295,12 @@ const ResumeBuilder = () => {
                   />
                 )}
               </div>
-              <button  onClick={()=>{toast.promise(saveResume, {loading : 'Saving...'})}} className="bg-gradient-to-r from-blue-600 to-blue-900 text-white hover:from-blue-600 hover:to-blue-700 transition-all rounded-md px-6 py-2 mt-6 text-sm font-medium shadow-lg shadow-purple-900/30">
+              <button
+                onClick={() => {
+                  toast.promise(saveResume, { loading: "Saving..." });
+                }}
+                className="bg-gradient-to-r from-blue-600 to-blue-900 text-white hover:from-blue-600 hover:to-blue-700 transition-all rounded-md px-6 py-2 mt-6 text-sm font-medium shadow-lg shadow-purple-900/30"
+              >
                 Save Changes
               </button>
             </div>
