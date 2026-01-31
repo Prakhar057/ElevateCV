@@ -1,31 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Loader from "../components/Loader";
 import ResumePreview from "../components/ResumePreview";
 import { ArrowLeftIcon } from "lucide-react";
-import { useEffect } from "react";
 import api from "../configs/api";
 
 const Preview = () => {
   const { resumeId } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [resumeData, setResumeData] = useState(null);
-  
-  const loadResume = async () => {
-   try {
-    const {data} = await api.get(`/api/resumes/public/${resumeId}` )
-    setResumeData(data.resume)
-    console.log(data)
-   }catch(error){
-    console.log(error.message)
-   }finally{
-    setIsLoading(false)
-   }
-  };
 
   useEffect(() => {
+    const loadResume = async () => {
+      try {
+        const { data } = await api.get(`/api/resumes/public/${resumeId}`);
+        setResumeData(data.resume);
+        console.log(data);
+      } catch (error) {
+        console.log(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
     loadResume();
-  }, []);
+  }, [resumeId]);
 
   return resumeData ? (
     <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black">
