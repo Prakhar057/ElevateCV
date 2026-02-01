@@ -8,25 +8,29 @@ const Testimonial = () => {
       image:
         "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200",
       name: "Briar Martin",
-      handle: "@neilstellar",
+      handle: "@briar_design",
+      text: "ElevateCV transformed my job search! The AI suggestions helped me highlight my skills perfectly. I landed interviews at top companies within weeks.",
     },
     {
       image:
         "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200",
       name: "Avery Johnson",
-      handle: "@averywrites",
+      handle: "@avery_dev",
+      text: "I was struggling to format my resume correctly. ElevateCV's templates are beautiful and professional. The AI writer is a game-changer!",
     },
     {
       image:
         "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=200&auto=format&fit=crop&q=60",
       name: "Jordan Lee",
-      handle: "@jordantalks",
+      handle: "@jordan_pm",
+      text: "The best resume builder I've used. It's intuitive, fast, and the results are stunning. Highly recommend it to anyone looking to level up their career.",
     },
     {
       image:
         "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200&auto=format&fit=crop&q=60",
-      name: "Avery Johnson",
-      handle: "@averywrites",
+      name: "Leo Carter",
+      handle: "@leo_analyst",
+      text: "ElevateCV made updating my resume so easy. I love the dark mode interface and the real-time preview. It's a must-have tool for job seekers.",
     },
   ];
   const CreateCard = ({ card }) => (
@@ -57,9 +61,7 @@ const Testimonial = () => {
           <span className="text-xs text-gray-400">{card.handle}</span>
         </div>
       </div>
-      <p className="text-sm py-4 text-gray-300">
-        Radiant made undercutting all of our competitors an absolute breeze.
-      </p>
+      <p className="text-sm py-4 text-gray-300">{card.text}</p>
     </div>
   );
   return (
@@ -77,7 +79,7 @@ const Testimonial = () => {
         </div>
         <Title
           title="Don't just take our words"
-          description="Hear what our users say about us. We're always looking for ways to improve. If you have a positive exprience with us, Please leave a review"
+          description="Hear what our users say about us. We're always looking for ways to improve. If you have a positive experience with us, Please leave a review"
         />
       </div>
       <style>{`

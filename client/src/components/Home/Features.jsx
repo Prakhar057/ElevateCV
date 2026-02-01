@@ -60,10 +60,11 @@ const Features = () => {
 
               <div className="space-y-2">
                 <h3 className="text-base font-semibold text-white">
-                  Real-Time Analytics
+                  AI-Powered Writing
                 </h3>
                 <p className="text-sm text-gray-400 max-w-xs">
-                  Get instant insights into your finances with live dashboards.
+                  Generate professional resume content instantly with our
+                  advanced AI algorithms.
                 </p>
               </div>
             </div>
@@ -87,10 +88,11 @@ const Features = () => {
               </svg>
               <div className="space-y-2">
                 <h3 className="text-base font-semibold text-white">
-                  Bank-Grade Security
+                  ATS-Friendly Templates
                 </h3>
                 <p className="text-sm text-gray-400 max-w-xs">
-                  End-to-end encryption, 2FA, compliance with GDPR standards.
+                  Ensure your resume gets past applicant tracking systems with
+                  optimized formats.
                 </p>
               </div>
             </div>
@@ -115,11 +117,11 @@ const Features = () => {
               </svg>
               <div className="space-y-2">
                 <h3 className="text-base font-semibold text-white">
-                  Customizable Reports
+                  Instant Preview
                 </h3>
                 <p className="text-sm text-gray-400 max-w-xs">
-                  Export professional, audit-ready financial reports for tax or
-                  internal review.
+                  See changes in real-time as you build your resume with our
+                  easy-to-use editor.
                 </p>
               </div>
             </div>
